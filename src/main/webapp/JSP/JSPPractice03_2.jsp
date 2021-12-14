@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +9,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<title>Get Method - 링크</title>
+<title>Get Method - form 태그</title>
 </head>
 <body>
-	<h1>날짜, 시간 링크</h1>
-	<form action="/p/JSP/JSPPractice02?type=time">
-	<button type="submit">현재 시간 확인</button>
-	</form>
-	<form action="/p/JSP/JSPPractice02?type=date">
-	<button type="submit">현재 날짜 확인</button>
-	</form>
+	<%
+	String heightStr = request.getParameter("height");
+	String weightStr = request.getParameter("weight");
+	int height = Integer.parseInt(heightStr);
+	int weight = Integer.parseInt(weightStr);
+	
+	double bmi = weight / ((height/100.0) * (height/100.0));
+	
+	String status ="";
+	
+	if(bmi <= 20.0) {
+		status="저체중";
+	} else if (bmi <= 25.0) {
+		status="정상";
+	} else if (bmi <= 30.0) {
+		status="과체중";		
+	} else {
+		status="비만";		
+	}
+	%>
+	
+	<h2>BMI 측정 결과</h2>
+	<span>당신은 </span>
+	<span class="text-primary font-weight-bold"><%=status %></span>
+	<span>입니다.</span>
+	<br>
+	<span>BMI 수치 : <%=bmi %></span>
 
 </body>
 </html>
