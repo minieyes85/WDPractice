@@ -18,7 +18,7 @@ public class ServletPractice06 extends HttpServlet{
 		
 		PrintWriter out = resp.getWriter();
 		
-		// 이름, 나이 파라메터
+		
 		String number1String = req.getParameter("number1");
 		String number2String = req.getParameter("number2");
 		
