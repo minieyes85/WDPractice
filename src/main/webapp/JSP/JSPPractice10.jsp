@@ -18,8 +18,16 @@
 
 <body>
 	<!-- 연도 달 셋팅 -->
-	<%
+	<%	
+		String inputYearStr = request.getParameter("year");
+		String inputMonthStr = request.getParameter("month");
+		int inputYear = Integer.parseInt(inputYearStr);
+		int inputMonth = Integer.parseInt(inputMonthStr);
+			
 		Calendar cal = Calendar.getInstance();
+		// 입력 받은 파라메터로 년 월 설정
+		cal.set(cal.YEAR,inputYear);
+		cal.set(cal.MONTH,inputMonth-1);
 		// 달의 첫날로 설정(1일)
 		cal.set(cal.DAY_OF_MONTH, 1);
 		// 달의 첫날 요일 설정
@@ -27,15 +35,15 @@
 		// 달의 마지막날 설정
 		int lastDayOfMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		// 출력 날짜 설정
-		int space = firstDayOfWeek - 6 ;
+		int space = 1-firstDayOfWeek ;
 		int spaceDays = space-1;
-		int DaysOfMonth = space + lastDayOfMonth;
+		int DaysOfMonth = - space + lastDayOfMonth;
 	
 	%>
 	
 	<div class="container text-center">
 		<div class="display-4 font-weight-bold">
-			2021년 12월
+			<%=inputYearStr %>년 <%=inputMonthStr %>월
 		</div>
 		<br>
 		<table class="table display-4">			
@@ -60,7 +68,7 @@
 					<%
 					for(int j = 1 ; j <= 7 ; j++){
 						
-						if(space <= 0) {
+						if(space < 0) {
 							%>
 							<td></td>
 							<%
