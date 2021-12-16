@@ -1,27 +1,47 @@
 package com.minieyes.trash;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Trash {
 		
 	public static void main(String[] args) {
-		List<String> scoreList = Arrays.asList(new String[]{"X", "O", "O", "O", "X", "O", "O", "O", "X", "O"});
 		
-		int sum = 0;
-		for(int i = 1; i <= 50 ; i++) {
-			sum += i;
-		}
+		Calendar cal = Calendar.getInstance();
 		
-		System.out.println(sum);
+		Date date = cal.getTime();
+		System.out.println(date);
 		
-		String birthDay = "20010820";
-		String yearStr = birthDay.substring(0, 4);
-		int year = Integer.parseInt(yearStr);
-		int now = 2021;
-		int age = now - year + 1;	
-		System.out.println(year);
-		System.out.println(age);
+		
+		
+		date = cal.getTime();
+		System.out.println(date);		
+		int week = cal.get(Calendar.DAY_OF_WEEK);
+		System.out.println(week);
+		
+		cal.set(cal.DAY_OF_MONTH, 1);
+		week = cal.get(Calendar.DAY_OF_WEEK);
+		System.out.println(week);
+		
+		date = cal.getTime();
+		System.out.println(date);
+		
+		cal.add(Calendar.DATE, 1);
+		date = cal.getTime();
+		System.out.println(date);
+		
+		cal.set(cal.DAY_OF_MONTH, 1);
+		int fdayow = cal.DAY_OF_WEEK;
+		System.out.println(fdayow);
+		
+		int test = cal.get(Calendar.WEEK_OF_MONTH);
+		System.out.println(test);
+		
+		int last = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		System.out.println(last);
+		
+		
+		
 	}
 	
 }
