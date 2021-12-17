@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,33 +13,16 @@
 </head>
 
 <body>
+	
 	<div class="container">
-		<header class="h2 text-success d-flex mt-3">
-			Melong <input type="text" class="ml-3 input-group"><button type="button" class="btn">검색</button>
-		</header>
-		<nav class="font-weight-bold">
-			<ul class="nav">
-				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱챠트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">최신음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">장르음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱DJ</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">뮤직어워드</a></li>
-			</ul>
-		</nav>
-		<section class="border border-success d-flex">
-			<div class="m-3">
-				<img width="250" src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG">
-			</div>
-			<div class="m-3">
-				<p class="h2 font-weight-bold text-dark">아이유</p>
-				<p class="h5 text-info">EDAM 엔터테인먼트</p>
-				<p class="h5">2008 데뷔</p>
-			</div>
-		</section>
-		<section>
-		</section>
-		<footer>
-		</footer>
+		<jsp:include page="header.jsp" flush="true" />
+		
+		<jsp:include page="nav.jsp" flush="true" />
+		
+		<jsp:include page="info.jsp" flush="true" />
+		
+		<jsp:include page="footer.jsp" flush="true" />
+		
 	</div>
 	
 	
