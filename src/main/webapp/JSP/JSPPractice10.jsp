@@ -67,30 +67,36 @@
 					<%
 					for(int j = 1 ; j <= 7 ; j++){
 						
+						// 달력 시작전 빈칸 출력
 						if(space > 0) {
 							%>
 							<td></td>
 							<%
 							space--;
 						} else {
+							// Calendar Class에서 날짜 정수 변환
 							day =  cal.get(Calendar.DATE);
 							if(i > lastDayOfMonth){
+								// 달의 마지막날을 지나면 멈춤
 								break;
 							} else {
 								if(cal.get(Calendar.DAY_OF_WEEK) == 1){
 									%>
+									<!-- 일요일 빨간색 표시 -->
 									<td class = "text-danger"><%=day%></td>
 									<%									
 									} else if (cal.get(Calendar.DAY_OF_WEEK) == 7){
 									%>
+									<!-- 토요일 파란색 표시 -->
 									<td class = "text-primary"><%=day%></td>
 									<%
 									} else {
 									%>
+									<!-- 평일 표시 -->
 									<td><%=day%></td>
 									<%
 									}
-									
+								// iteration 돌면서 하루씩 증가
 								cal.add(Calendar.DATE, 1);
 								i++;
 							}
