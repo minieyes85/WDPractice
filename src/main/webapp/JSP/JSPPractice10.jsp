@@ -35,9 +35,7 @@
 		// 달의 마지막날 설정
 		int lastDayOfMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		// 출력 날짜 설정
-		int space = 1-firstDayOfWeek ;
-		int spaceDays = space-1;
-		int DaysOfMonth = - space + lastDayOfMonth;
+		int space = firstDayOfWeek-1 ;
 	
 	%>
 	
@@ -62,41 +60,41 @@
 			<tbody>				
 				<%
 				int i = 1;
-				while(i <= DaysOfMonth){
+				int day =  cal.get(Calendar.DATE);
+				while(i <= lastDayOfMonth){
 					%>
 					<tr>
 					<%
 					for(int j = 1 ; j <= 7 ; j++){
 						
-						if(space < 0) {
+						if(space > 0) {
 							%>
 							<td></td>
 							<%
-							i++;
-							space++;
+							space--;
 						} else {
-							int day = cal.get(Calendar.DATE);
-							if(i+spaceDays > lastDayOfMonth){
+							day =  cal.get(Calendar.DATE);
+							if(i > lastDayOfMonth){
 								break;
 							} else {
-								
 								if(cal.get(Calendar.DAY_OF_WEEK) == 1){
 									%>
 									<td class = "text-danger"><%=day%></td>
 									<%									
-								} else if (cal.get(Calendar.DAY_OF_WEEK) == 7){
+									} else if (cal.get(Calendar.DAY_OF_WEEK) == 7){
 									%>
 									<td class = "text-primary"><%=day%></td>
 									<%
-								} else {
+									} else {
 									%>
 									<td><%=day%></td>
 									<%
-								}
-								
+									}
+									
 								cal.add(Calendar.DATE, 1);
-								i++;							
-							}							
+								i++;
+							}
+														
 						}
 					}
 					%>
