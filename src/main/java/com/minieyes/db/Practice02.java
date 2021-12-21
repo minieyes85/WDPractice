@@ -2,11 +2,8 @@ package com.minieyes.db;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.minieyes.common.MysqlService;
 
-@WebServlet("/db/practice01")
-public class Practice01 extends HttpServlet{
+@WebServlet("/db/practice02")
+public class Practice02 extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -28,16 +25,8 @@ public class Practice01 extends HttpServlet{
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		
-//		String insertQuery = "INSERT INTO `real_estate`\r\n"
-//				+ "(`realtorId`,`address`,`area`,`type`,`price`)\r\n"
-//				+ "VALUE\r\n"
-//				+ "(3,'헤라펠리스 101동 5305호',350,'매매',150000);";
-//		int count = mysqlService.update(insertQuery);
-//		
-//		out.println("삽입 : " + count);
-		
-		String selectQuery = "SELECT * FROM `real_estate`";
-		ResultSet resultSet = mysqlService.select(selectQuery);
+		String query = "SELECT * FROM `real_estate`";
+		ResultSet resultSet = mysqlService.select(query);
 		
 		try {
 			while(resultSet.next()) {
@@ -50,7 +39,6 @@ public class Practice01 extends HttpServlet{
 			e.printStackTrace();
 		}
 		mysqlService.disconnect();
-		
 	
 	
 	}
