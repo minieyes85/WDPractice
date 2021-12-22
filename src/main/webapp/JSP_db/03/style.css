@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#wrap {
+	width : 1200px;
+}
+
+#header {
+	background-color: #FF7F50;	
+}
+
+#headLogo {
+	text-decoration: none;
+	color : white;
+}
+
+#headLogo:hover {
+	text-decoration: none;
+	color : white;
+}
+
+#nav {
+	background-color: #FF7F50;
+	font-size: 20px;
+}
+
+#item {
+	margin-top : 10px;
+	width : 360px;
+	height : 360px;
+}

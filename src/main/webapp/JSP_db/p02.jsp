@@ -27,7 +27,9 @@
 	
 	<div class="container">
 		
-		<div>
+		<div class = "text-center h1 mt-5">즐겨찾기</div>
+		
+		<div class = "mt-2">
 			<button type="button" class = "btn btn-success" onclick="location.href='p02Input.jsp'">추가하기</button>
 		</div>
 	
