@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.minieyes.common.MysqlService;
 
-@WebServlet("/db/practice02.do")
-public class Practice02 extends HttpServlet{
+@WebServlet("/db/practice02Delete.do")
+public class Practice02_1 extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -23,17 +23,11 @@ public class Practice02 extends HttpServlet{
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		
-		String inputName = req.getParameter("name");
-		String inputUrl = req.getParameter("url");
+		String inputId = req.getParameter("id");
 		
-		String inputQuery = "INSERT INTO `favorite`\r\n"
-				+ "(`name`,`url`)\r\n"
-				+ "VALUES\r\n"
-				+ "('"+ inputName + "','" + inputUrl + "');";
+		String deleteQuery = "DELETE FROM `favorite` WHERE (`id` = '" + inputId + "');";
 		
-		int count = mysqlService.update(inputQuery);
-		
-		out.println("DB return value : " + count);
+		mysqlService.update(deleteQuery);
 		
 		resp.sendRedirect("/p/JSP_db/p02.jsp");
 		

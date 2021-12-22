@@ -32,6 +32,7 @@
 			<tr>
 				<td>사이트</td>
 				<td>사이트 주소</td>
+				<td></td>
 			</tr>
 		</thead>
 		
@@ -39,12 +40,14 @@
 			<%
 			while(resultSet.next()){
 				
+				String id = resultSet.getString("id");
 				String name = resultSet.getString("name");
 				String url = resultSet.getString("url");
 				%>
 				<tr>
 					<td><%=name %></td>
 					<td><a href="<%=url %>"><%=url %></a></td>
+					<td><a href="/p/db/practice02Delete.do?id=<%=id%>">삭제</a></td>
 				</tr>
 				<%
 			}
