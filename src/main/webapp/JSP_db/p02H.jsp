@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "com.minieyes.common.MysqlServiceH" %>
+<%@ page import = "java.sql.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,19 +15,46 @@
 <title>JSP와 database 연동</title>
 </head>
 <body>
-	<div class="container">
-		<div class = "h1 mt-5">즐겨찾기 추가</div>
-		<form type = "get" action="/p/db/practice02H.do">
-		<div>
-			사이트명 : <br>
-			<input type = "text" name = "name"> <br>
-			사이트 주소 : <br>
-			<input type = "text" name = "url"> <br>
-			<br>
-			<button type = "submit" class="btn btn-success">추가</button>
-		</div>
-		</form>	
-	</div>
+	<%
+	MysqlServiceH mysqlService = MysqlServiceH.getInstance();
+	mysqlService.connect();
 	
+	String query = "SELECT * FROM `favorite`";
+	
+	ResultSet resultSet = mysqlService.select(query);
+	
+	%>
+	
+	<div class="container">
+		<div class="mt-5">
+		<button class="btn btn-success" onclick="location.href='p02Input.jsp'">사이트 추가하기</button>
+		</div>
+		<table class="table text-center mt-3">
+		
+		<thead>
+			<tr>
+				<td>사이트</td>
+				<td>사이트 주소</td>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<%
+			while(resultSet.next()){
+				
+				String name = resultSet.getString("name");
+				String url = resultSet.getString("url");
+				%>
+				<tr>
+					<td><%=name %></td>
+					<td><a href="<%=url %>"><%=url %></a></td>
+				</tr>
+				<%
+			}
+			%>		
+		</tbody>
+			
+		</table>
+	</div>
 </body>
 </html>

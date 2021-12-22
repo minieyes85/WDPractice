@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.minieyes.common.MysqlServiceH;
 
-@WebServlet("/db/practice02.do")
-public class Practice02 extends HttpServlet{
+@WebServlet("/db/practice02H.do")
+public class Practice02H extends HttpServlet{
 	
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		resp.setContentType("text/plain");
 		
@@ -36,6 +36,8 @@ public class Practice02 extends HttpServlet{
 		out.println("DB return value : " + count);
 		
 		mysqlService.disconnect();
+		
+		resp.sendRedirect("/p/JSP_db/p02H.jsp");
 	
 	
 	}
