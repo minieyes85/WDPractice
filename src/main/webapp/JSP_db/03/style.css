@@ -28,3 +28,12 @@
 	width : 360px;
 	height : 360px;
 }
+
+#imgBoundary {
+	margin : 13px;
+}
+
+#itemImg {
+	width : 330px;
+	object-fit: contain;
+}

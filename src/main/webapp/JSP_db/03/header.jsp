@@ -2,6 +2,6 @@
 
 <header class = "mt-3 pt-3 pb-3" id = "header">
 	<div class = "text-center">
-		<a href="#" class="h1" id="headLogo">HONG당무 마켓</a>
+		<a href="index.jsp" class="h1" id="headLogo">HONG당무 마켓</a>
 	</div>
 </header>
