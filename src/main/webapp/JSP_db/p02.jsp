@@ -26,6 +26,11 @@
 	%>
 	
 	<div class="container">
+		
+		<div>
+			<button type="button" class = "btn btn-success" onclick="location.href='p02Input.jsp'">추가하기</button>
+		</div>
+	
 		<table class="table text-center mt-3">
 		
 		<thead>

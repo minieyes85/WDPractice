@@ -14,9 +14,6 @@
 </head>
 <body>
 	<div class="container">
-		<div>
-			<button type="button" class = "btn btn-success" onclick="location.href='p02Input.jsp'">추가하기</button>
-		</div>
 		<div class = "h1 mt-5">즐겨찾기 추가</div>
 		<form type = "get" action="/p/db/practice02.do">
 		<div>
