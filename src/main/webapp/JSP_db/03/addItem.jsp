@@ -17,7 +17,7 @@
 		<div id="addTitle">물건 올리기</div>
 		<div class="d-flex mt-3">
 			<div id="addSelect">
-			<select class="custom-select" name="sellerId">
+			<select class="custom-select" name="sellerId" id="sellerId">
 				<option selected>- 아이디 선택 -</option>
 				<%
 				while(resultSet.next()){					
@@ -32,12 +32,12 @@
 			</div>
 			
 			<div id="addSubject" class="pl-3 input-group">
-				<input type="text" name="subject" class="form-control" placeholder="제목">
+				<input type="text" name="subject" class="form-control" placeholder="제목" id="subject">
 			</div>
 			
 			<div class="pl-3">
 				<div class="input-group">
-  					<input type="text" class="form-control" placeholder="가격" name="price">
+  					<input type="text" class="form-control" placeholder="가격" name="price" id="price">
   					<div class="input-group-append">
     					<span class="input-group-text">원</span>
 					</div>
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<button type="submit" class="btn btn-block">저장</button>
+			<button type="submit" class="btn btn-block" id="submission">저장</button>
 		</div>
 		
 	</div>
@@ -65,3 +65,30 @@
 	mysqlService.disconnect();
 %>
 </section>
+
+<script>
+	$(document).ready(function(){
+			
+		$('form').submit(function(){
+			let flag = true;
+			let sellerId = $('#sellerId').val();
+			let subject = $('#subject').val();
+			let price = $('#price').val();
+			
+			if(sellerId == ""){
+				alert("아이디를 선택하세요.");
+				return flag = false;
+			} else if(subject == "") {
+				alert("제목을 입력하세요.");
+				return flag = false;
+			} else if(price == "") {
+				alert("가격을 입력하세요.");
+				return flag = false;
+			}			
+			return flag;
+		});
+		
+		
+	});
+
+</script>

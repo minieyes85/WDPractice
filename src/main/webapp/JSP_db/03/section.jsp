@@ -3,6 +3,8 @@
 <%@ page import="java.sql.*" %>
 
 <%
+	// 외부 작업시 MysqlService 호출,
+	// 집에서 작업시 MysqlServiceH 호출
 	MysqlServiceH mysqlService = MysqlServiceH.getInstance();
 	mysqlService.connect();
 	

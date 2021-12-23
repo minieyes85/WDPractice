@@ -29,8 +29,13 @@ public class Practice03 extends HttpServlet{
 		String priceStr = req.getParameter("price");
 		int price = Integer.parseInt(priceStr);
 		String description = req.getParameter("description");
-		String url = req.getParameter("url");
-		
+		if(description.equals("")){
+			description = null;
+		}
+		String url = req.getParameter("picture");
+		if(url.equals("")){
+			url = null;
+		}	
 		String inputQuery = "INSERT INTO `used_goods`\r\n"
 				+ "(`sellerId`,`title`,`price`,`description`,`picture`)\r\n"
 				+ "VALUE\r\n"
