@@ -25,8 +25,10 @@
 
 #item {
 	margin-top : 10px;
+	margin-right : 10px;
 	width : 360px;
-	height : 360px;
+	height : 340px;
+	border : solid #FF7F50;
 }
 
 #imgBoundary {
@@ -35,5 +37,49 @@
 
 #itemImg {
 	width : 330px;
+	height : 220px;
 	object-fit: contain;
+}
+
+#goodsInfo {
+	margin : 13px;
+	font-weight : bold;
+}
+
+#goodsInfo > #goodsTitle {
+	font-size : 20px;
+}
+
+#goodsInfo > #goodsPrice {
+	font-size : 16px;
+	color : grey;
+}
+
+#goodsInfo > #goodsSeller {
+	font-size : 18px;
+	color : #FF7F50;
+}
+
+#addForm {
+	margin-top : 70px;
+	margin-left : 100px;
+	margin-right : 100px;
+	margin-bottom : 100px;
+}
+
+#addForm > #addTitle {
+	font-size : 50px;
+}
+
+#addSelect {
+	width : 220px;
+}
+
+#addSubject {
+	width : 450px;
+}
+
+#addTextarea > textarea {
+	width : 100%;
+	height : 200px;
 }

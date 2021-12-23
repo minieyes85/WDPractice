@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.minieyes.common.MysqlService" %>
+<%@ page import="com.minieyes.common.*" %>
 <%@ page import="java.sql.*" %>
 
 <%
-	MysqlService mysqlService = MysqlService.getInstance();
+	MysqlServiceH mysqlService = MysqlServiceH.getInstance();
 	mysqlService.connect();
 	
-	String selectQuery = "SELECT * FROM `used_goods`";
+	String selectQuery = "SELECT * FROM `used_goods` AS `A` "
+			+ "JOIN `seller` AS `B` "
+			+ "ON A.sellerId = B.id";
 	
 	ResultSet resultSet = mysqlService.select(selectQuery);
-	
 %>
 
-<section class = "bg-info d-flex flex-wrap justify-content-between">
+<section class = "d-flex flex-wrap">
 	
 	<%
 	while(resultSet.next()){
@@ -20,38 +21,28 @@
 		String imgUrl = resultSet.getString("picture");
 		String title = resultSet.getString("title");
 		int price = resultSet.getInt("price");
-		int sellerId = resultSet.getInt("sellerId");
+		String priceStr = String.format("%,d", price);
+		String seller = resultSet.getString("nickname");
 		
 		%>
 		
-		<div class="border" id="item">
-			<div id="imgBoundary"><img id="itemImg" src="<%=imgUrl%>"></div>	 	
-	 		<div><%=title%></div>
-	 		<div><%=price%>원</div>
-	 		<div><%=sellerId%></div>
+		<div id="item">
+			<div id="imgBoundary"><img id="itemImg" src="<%=imgUrl%>" onerror="this.src='/p/img/noImg.jpg'"></div>	 
+			<div id="goodsInfo">
+				<div id="goodsTitle"><%=title%></div>
+	 			<div id="goodsPrice"><%=priceStr%>원</div>
+	 			<div id="goodsSeller"><%=seller%></div>
+			</div>	
+	 		
 		</div>
 		
 		<%
 	}
 	
 	%>
+
+<%
+	mysqlService.disconnect();
+%>
 	
-	<div class="border" id="item">
-	 item No.1
-	</div>
-	<div class="border" id="item">
-	 item No.2
-	</div>
-	<div class="border" id="item">
-	 item No.3
-	</div>
-	<div class="border" id="item">
-	 item No.4
-	</div>
-	<div class="border" id="item">
-	 item No.5
-	</div>
-	<div class="border" id="item">
-	 item No.6
-	</div>
 </section>

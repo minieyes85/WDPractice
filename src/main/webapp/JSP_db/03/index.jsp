@@ -21,7 +21,22 @@
 		
 		<jsp:include page="nav.jsp" />
 		
-		<jsp:include page="section.jsp" />
+		<%
+		String type = request.getParameter("type");
+		
+		if(type == null) {
+			%>
+			<jsp:include page="section.jsp" />
+			<%
+		} else {
+			%>
+			<jsp:include page="addItem.jsp" />
+			<%
+		}
+		
+		%>
+		
+		
 		
 		<jsp:include page="footer.jsp" />
 		
