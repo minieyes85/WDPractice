@@ -5,7 +5,7 @@
 <%
 	// 외부 작업시 MysqlService 호출,
 	// 집에서 작업시 MysqlServiceH 호출
-	MysqlServiceH mysqlService = MysqlServiceH.getInstance();
+	MysqlService mysqlService = MysqlService.getInstance();
 	mysqlService.connect();
 	
 	String selectQuery = "SELECT * FROM `used_goods` AS `A` "
@@ -20,6 +20,7 @@
 	<%
 	while(resultSet.next()){
 		
+		int id = resultSet.getInt("id");
 		String imgUrl = resultSet.getString("picture");
 		String title = resultSet.getString("title");
 		int price = resultSet.getInt("price");
@@ -31,7 +32,7 @@
 		<div id="item">
 			<div id="imgBoundary"><img id="itemImg" src="<%=imgUrl%>" onerror="this.src='/p/img/noImg.jpg'"></div>	 
 			<div id="goodsInfo">
-				<div id="goodsTitle"><%=title%></div>
+				<div id="goodsTitle"><a href="/p/JSP_db/03/index.jsp?id=<%=id%>"><%=title%></a></div>
 	 			<div id="goodsPrice"><%=priceStr%>원</div>
 	 			<div id="goodsSeller"><%=seller%></div>
 			</div>	

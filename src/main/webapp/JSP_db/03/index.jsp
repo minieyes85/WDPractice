@@ -25,14 +25,19 @@
 		
 		<%
 		String type = request.getParameter("type");
+		String id = request.getParameter("id");
 		
-		if(type == null) {
+		if(type == null && id == null) {
 			%>
 			<jsp:include page="section.jsp" />
 			<%
-		} else {
+		} else if(type != null) {
 			%>
 			<jsp:include page="addItem.jsp" />
+			<%
+		} else if(id != null){
+			%>
+			<jsp:include page="goodsDetail.jsp" />
 			<%
 		}
 		

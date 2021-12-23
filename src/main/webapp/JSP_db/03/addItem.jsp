@@ -3,7 +3,7 @@
 <%@ page import="java.sql.*" %>
 
 <%
-	MysqlServiceH mysqlService = MysqlServiceH.getInstance();
+	MysqlService mysqlService = MysqlService.getInstance();
 	mysqlService.connect();
 	
 	String selectQuery = "SELECT * FROM `seller`";

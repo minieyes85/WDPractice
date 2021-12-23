@@ -31,6 +31,10 @@
 	border : solid #FF7F50;
 }
 
+#item:hover {
+	background-color: #FFDACC;
+}
+
 #imgBoundary {
 	margin : 13px;
 }
